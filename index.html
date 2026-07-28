@@ -94,14 +94,12 @@
   .partner-card:hover { box-shadow: 0 6px 20px rgba(0,0,0,.10); }
   .partner-card.first { border: 3px solid var(--first-border); }
   .rank {
-    position: absolute; top: -1px; left: -1px;
-    width: 34px; height: 34px;
-    background: #fff; border: 1px solid var(--line);
-    border-radius: 10px 0 10px 0;
+    position: absolute; top: 50%; left: -18px; transform: translateY(-50%);
+    width: 38px; height: 38px; border-radius: 50%;
+    background: #f0d9fb; border: 0;
     display: flex; align-items: center; justify-content: center;
-    font-weight: 700; font-size: 15px; color: #555;
+    font-weight: 700; font-size: 16px; color: #7b3fa8;
   }
-  .partner-card.first .rank { border-color: var(--first-border); color: var(--purple); }
   .editor-badge {
     position: absolute; top: -14px; left: 44px;
     background: var(--editor-badge); color: #fff;
@@ -158,16 +156,10 @@
 
   /* ===== Card style B (California Psychics) ===== */
   .partner-card.style-b {
-    grid-template-columns: 218px 1fr 165px 205px;
+    grid-template-columns: 218px 1fr 210px;
     border-radius: 14px;
     border-color: #e8e6ef;
     box-shadow: 0 3px 14px rgba(40, 25, 80, .07);
-  }
-  .partner-card.style-b .rank {
-    top: 50%; left: -18px; transform: translateY(-50%);
-    width: 38px; height: 38px; border-radius: 50%;
-    background: #f0d9fb; border: 0;
-    color: #7b3fa8; font-size: 16px; font-weight: 700;
   }
   .partner-card.style-b .card-logo { border-right: 0; padding: 24px 10px 24px 24px; }
   .cp-logo { display: flex; flex-direction: column; align-items: center; gap: 2px; text-decoration: none; }
@@ -182,20 +174,25 @@
     color: #14523a; font-size: 7.5px; font-weight: 600;
     letter-spacing: 1.6px; white-space: nowrap; margin-top: 2px;
   }
+  .pg-logo { display: flex; align-items: center; gap: 9px; text-decoration: none; }
+  .pg-logo svg { flex: 0 0 auto; display: block; }
+  .pg-logo .pg-name {
+    color: #1c1c3a; font-size: 16.5px; font-weight: 600;
+    letter-spacing: -.2px; white-space: nowrap;
+  }
+  .keen-logo, .kasamba-logo { display: flex; align-items: center; gap: 6px; text-decoration: none; }
+  .keen-logo svg, .kasamba-logo svg { flex: 0 0 auto; display: block; }
+  .keen-logo .brand-text {
+    font-family: Georgia, 'Times New Roman', serif;
+    color: #6e6e6e; font-size: 30px; font-weight: 400; letter-spacing: -.5px;
+  }
+  .kasamba-logo .brand-text { color: #6b82f6; font-size: 23px; font-weight: 700; letter-spacing: -.7px; }
   .partner-card.style-b .card-body { padding: 22px 8px 22px 0; }
   .offer-headline { font-size: 16.5px; font-weight: 700; color: #1c1c28; margin-bottom: 10px; line-height: 1.35; }
   .checks-gold { list-style: none; margin: 0; }
   .checks-gold li { padding: 4px 0 4px 26px; position: relative; font-size: 15px; color: #33333f; }
   .checks-gold li::before { content: "✓"; position: absolute; left: 2px; top: 4px; color: #f0a132; font-weight: 700; font-size: 16px; }
-  .score-block { display: flex; align-items: flex-start; gap: 10px; padding: 24px 0; align-self: center; }
-  .score-box {
-    background: #8b3dbf; color: #fff; font-size: 19px; font-weight: 700;
-    border-radius: 7px; padding: 7px 10px; line-height: 1;
-  }
-  .score-word { font-size: 15.5px; font-weight: 700; color: #1c1c28; margin-bottom: 1px; }
-  .stars-gold { color: #f5a623; font-size: 15px; letter-spacing: 1px; }
-  .stars-gold .half { opacity: .45; }
-  .partner-card.style-b .card-cta { border-left: 0; padding: 22px 20px; }
+  .partner-card.style-b .card-cta { border-left: 0; padding: 22px 20px; text-align: center; }
   .visit-btn.pill { border-radius: 30px; padding: 13px 10px; }
 
   /* ===== Content + sidebar ===== */
@@ -249,10 +246,9 @@
     article { padding: 0 20px; }
     .partner-card { grid-template-columns: 1fr; }
     .partner-card.style-b { grid-template-columns: 1fr; }
-    .partner-card.style-b .rank { top: -1px; left: 10px; transform: none; }
+    .rank { top: -1px; left: 10px; transform: none; }
     .partner-card.style-b .card-logo { border-bottom: 1px solid #eee; }
     .partner-card.style-b .card-body { padding: 22px 24px; }
-    .score-block { justify-content: center; padding: 4px 0 18px; }
     .card-logo { border-right: 0; border-bottom: 1px solid #eee; padding: 30px 14px 18px; }
     .card-cta { border-left: 0; border-top: 1px solid #eee; }
     .banner-inner { text-align: center; }
@@ -330,21 +326,56 @@
           <li>Every session covered by a full satisfaction guarantee</li>
         </ul>
       </div>
-      <div class="score-block">
-        <div class="score-box">9.3</div>
-        <div>
-          <div class="score-word">Excellent</div>
-          <div class="stars-gold">★★★★<span class="half">★</span></div>
-        </div>
-      </div>
       <div class="card-cta">
+        <div class="score-tag">Our score</div>
+        <div class="score-num">9.3</div>
+        <div class="score-label">Excellent</div>
+        <div class="stars">★★★★½</div>
+        <div class="reviews">1,842 user reviews</div>
         <a class="visit-btn pill" href="https://californiapsychics.pxf.io/DW1ARo" target="_blank" rel="nofollow sponsored noopener">Visit Site</a>
       </div>
     </div>
 
-    <!-- #2 -->
-    <div class="partner-card">
+    <!-- #2 Purple Garden -->
+    <div class="partner-card style-b">
       <div class="rank">2</div>
+      <div class="card-logo">
+        <a class="pg-logo" href="#" rel="nofollow sponsored">
+          <svg width="30" height="30" viewBox="0 0 40 40" aria-hidden="true">
+            <circle cx="20" cy="7.5" r="6.4" fill="#a855f7"/>
+            <circle cx="30.8" cy="13.8" r="6.4" fill="#c026d3"/>
+            <circle cx="30.8" cy="26.2" r="6.4" fill="#ec4899"/>
+            <circle cx="20" cy="32.5" r="6.4" fill="#9333ea"/>
+            <circle cx="9.2" cy="26.2" r="6.4" fill="#7c3aed"/>
+            <circle cx="9.2" cy="13.8" r="6.4" fill="#6366f1"/>
+            <circle cx="20" cy="20" r="9.2" fill="#fff"/>
+            <ellipse cx="20" cy="20" rx="8.2" ry="5.6" fill="none" stroke="#1e1b4b" stroke-width="1.7"/>
+            <circle cx="20" cy="20" r="2.9" fill="#1e1b4b"/>
+          </svg>
+          <span class="pg-name">Purple Garden</span>
+        </a>
+      </div>
+      <div class="card-body">
+        <div class="offer-headline">Special Offer: Get $30 Free On Your First Reading</div>
+        <ul class="checks-gold">
+          <li>91.5% prediction accuracy, rated by real customers</li>
+          <li>More than 900 vetted psychics to choose from</li>
+          <li>Live readings by chat, voice, or video</li>
+        </ul>
+      </div>
+      <div class="card-cta">
+        <div class="score-tag">Our score</div>
+        <div class="score-num">9.5</div>
+        <div class="score-label">Excellent</div>
+        <div class="stars">★★★★★</div>
+        <div class="reviews">1,296 user reviews</div>
+        <a class="visit-btn pill" href="#" rel="nofollow sponsored">Visit Site</a>
+      </div>
+    </div>
+
+    <!-- #3 -->
+    <div class="partner-card">
+      <div class="rank">3</div>
       <div class="card-logo">
         <img class="partner-logo" src="assets/spiritual-blossom-logo.svg" alt="Spiritual Blossom logo">
         <div class="chose-today"><strong>31,204</strong> visitors picked this site this week</div>
@@ -364,13 +395,84 @@
         <div class="score-label">Excellent</div>
         <div class="stars">★★★★½</div>
         <div class="reviews">1,087 user reviews</div>
-        <a class="visit-btn" href="#" rel="nofollow sponsored">View Site</a>
+        <a class="visit-btn pill" href="#" rel="nofollow sponsored">Visit Site</a>
       </div>
     </div>
 
-    <!-- #3 -->
+    <!-- #4 Keen -->
+    <div class="partner-card style-b">
+      <div class="rank">4</div>
+      <div class="card-logo">
+        <a class="keen-logo" href="#" rel="nofollow sponsored">
+          <svg width="36" height="31" viewBox="0 0 62 54" aria-hidden="true">
+            <g style="mix-blend-mode: multiply">
+              <ellipse cx="25" cy="21" rx="9" ry="17.5" transform="rotate(-20 25 21)" fill="#5aa892" opacity=".9"/>
+              <ellipse cx="37" cy="21" rx="9" ry="17.5" transform="rotate(20 37 21)" fill="#74baa3" opacity=".85"/>
+              <ellipse cx="19" cy="35" rx="16" ry="9" transform="rotate(-8 19 35)" fill="#9ecabb" opacity=".9"/>
+              <ellipse cx="36" cy="36" rx="17" ry="9" transform="rotate(6 36 36)" fill="#17806d" opacity=".88"/>
+            </g>
+          </svg>
+          <span class="brand-text">keen</span>
+        </a>
+      </div>
+      <div class="card-body">
+        <div class="offer-headline">Special Offer: 5 Minutes for Just $1</div>
+        <ul class="checks-gold">
+          <li>Over 20 years of proven psychic experience</li>
+          <li>Advisors available by phone or chat, 24/7</li>
+          <li>Completely anonymous and confidential conversations</li>
+        </ul>
+      </div>
+      <div class="card-cta">
+        <div class="score-tag">Our score</div>
+        <div class="score-num">9.1</div>
+        <div class="score-label">Excellent</div>
+        <div class="stars">★★★★½</div>
+        <div class="reviews">1,573 user reviews</div>
+        <a class="visit-btn pill" href="#" rel="nofollow sponsored">Visit Site</a>
+      </div>
+    </div>
+
+    <!-- #5 Kasamba -->
+    <div class="partner-card style-b">
+      <div class="rank">5</div>
+      <div class="card-logo">
+        <a class="kasamba-logo" href="#" rel="nofollow sponsored">
+          <svg width="33" height="31" viewBox="0 0 40 38" aria-hidden="true">
+            <g fill="none" stroke-width="2.2" stroke-linecap="round">
+              <path d="M8 9 L32 29 M32 9 L8 29" stroke="#7ac943"/>
+              <g stroke="#6b82f6">
+                <circle cx="13.5" cy="13" r="6.6"/>
+                <circle cx="26.5" cy="13" r="6.6"/>
+                <circle cx="13.5" cy="25" r="6.6"/>
+                <circle cx="26.5" cy="25" r="6.6"/>
+              </g>
+            </g>
+          </svg>
+          <span class="brand-text">kasamba</span>
+        </a>
+      </div>
+      <div class="card-body">
+        <div class="offer-headline">3 Free Minutes + 50% Off Your First Purchase</div>
+        <ul class="checks-gold">
+          <li>Secure, confidential sessions with complete privacy</li>
+          <li>Qualified psychics, tarot readers, and mediums</li>
+          <li>Live chat and phone readings 24/7 with real advisors</li>
+        </ul>
+      </div>
+      <div class="card-cta">
+        <div class="score-tag">Our score</div>
+        <div class="score-num">8.9</div>
+        <div class="score-label">Very Good</div>
+        <div class="stars">★★★★½</div>
+        <div class="reviews">928 user reviews</div>
+        <a class="visit-btn pill" href="#" rel="nofollow sponsored">Visit Site</a>
+      </div>
+    </div>
+
+    <!-- #6 -->
     <div class="partner-card">
-      <div class="rank">3</div>
+      <div class="rank">6</div>
       <div class="card-logo">
         <img class="partner-logo" src="assets/mysticsense-logo.svg" alt="Mysticsense logo">
         <div class="chose-today"><strong>24,911</strong> visitors picked this site this week</div>
@@ -390,7 +492,7 @@
         <div class="score-label">Excellent</div>
         <div class="stars">★★★★½</div>
         <div class="reviews">864 user reviews</div>
-        <a class="visit-btn" href="#" rel="nofollow sponsored">View Site</a>
+        <a class="visit-btn pill" href="#" rel="nofollow sponsored">Visit Site</a>
       </div>
     </div>
 
@@ -411,7 +513,7 @@
     <div class="buttono">
       <div class="b-logo"><img src="assets/spiritual-blossom-logo.svg" alt="Spiritual Blossom logo"></div>
       <div class="b-text">30 Minutes — Up to a $200 Value — for Under $20</div>
-      <a class="b-btn" href="#" rel="nofollow sponsored">View Site</a>
+      <a class="b-btn" href="#" rel="nofollow sponsored">Visit Site</a>
     </div>
 
     <h3>Specialties in Psychic Readings</h3>
@@ -440,7 +542,7 @@
     <div class="buttono">
       <div class="b-logo"><img src="assets/spiritual-blossom-logo.svg" alt="Spiritual Blossom logo"></div>
       <div class="b-text">30 Minutes — Up to a $200 Value — for Under $20</div>
-      <a class="b-btn" href="#" rel="nofollow sponsored">View Site</a>
+      <a class="b-btn" href="#" rel="nofollow sponsored">Visit Site</a>
     </div>
 
     <h3>Communication Methods</h3>
@@ -461,7 +563,7 @@
     <div class="buttono">
       <div class="b-logo"><img src="assets/mysticsense-logo.svg" alt="Mysticsense logo"></div>
       <div class="b-text">5 Free Minutes With Your First Reading</div>
-      <a class="b-btn" href="#" rel="nofollow sponsored">View Site</a>
+      <a class="b-btn" href="#" rel="nofollow sponsored">Visit Site</a>
     </div>
 
     <h3>Conclusions</h3>
