@@ -17,16 +17,17 @@
 
     function alreadyFired() {
         if (fired) return true;
-        try { return localStorage.getItem(KEY) === '1'; } catch (e) { return false; }
+        try { return sessionStorage.getItem(KEY) === '1'; } catch (e) { return false; }
     }
     function markFired() {
         fired = true;
-        try { localStorage.setItem(KEY, '1'); } catch (e) {}
+        try { sessionStorage.setItem(KEY, '1'); } catch (e) {}
     }
 
-    /* Fires at most once per visitor. localStorage persists across visits, so
-       a returning visitor who already converted will not fire again. If
-       storage is blocked (private browsing), it degrades to once per page. */
+    /* Fires at most once per session. sessionStorage is cleared when the tab
+       or browser closes, so a visitor returning in a new session can convert
+       again. If storage is blocked (private browsing), it degrades to once
+       per page view. */
     window.uet_report_conversion = function () {
         if (alreadyFired()) return;
         markFired();
