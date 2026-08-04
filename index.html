@@ -304,6 +304,18 @@
     .banner-inner { text-align: center; }
     .banner h1 { font-size: 29px; margin-left: auto; margin-right: auto; }
     .banner .subtitle { margin-left: auto; margin-right: auto; }
+    /* Two compact columns instead of four full-width rows, so the strip
+       stops pushing the first partner card below the fold. */
+    .banner-strip { font-size: 12.5px; }
+    .banner-strip .wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 7px 10px;
+      padding: 10px 14px;
+      justify-content: initial;
+    }
+    .banner-strip span { text-align: left; line-height: 1.35; }
+    .banner-strip span::before { margin-right: 5px; }
     .buttono { grid-template-columns: 1fr; text-align: center; }
     .navlinks { display: none; }
   }
