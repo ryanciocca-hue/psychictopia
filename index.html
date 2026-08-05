@@ -5,8 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Psychictopia.com — 2026's Best Psychic Reading Services</title>
 <meta name="description" content="Compare 2026's top-rated online psychic reading services side by side, with exclusive intro offers for new customers.">
-<!-- LCP image: a CSS background is discovered late, so fetch it up front -->
-<link rel="preload" as="image" href="assets/hero-nebula.webp" fetchpriority="high">
 <!-- Microsoft Advertising UET tag -->
 <script>(function(w,d,t,u,o){w[u]=w[u]||[],o.ts=(new Date).getTime();var n=d.createElement(t); n.src="https://bat.bing.net/bat.js?ti="+o.ti+("uetq"!=u?"&q="+u:""),n.async=1, n.onload=n.onreadystatechange=function(){var s=this.readyState;s&&"loaded"!==s&&"complete"!==s||( o.q=w[u],w[u]=new UET(o),w[u].push("pageLoad"),n.onload=n.onreadystatechange=null)}; var i=d.getElementsByTagName(t)[0];i.parentNode.insertBefore(n,i); })(window,document,"script","uetq",{ti:"271011563", enableAutoSpaTracking: true});</script>
 <!-- Microsoft Advertising conversion goal: clicks_cta -->
@@ -100,25 +98,22 @@
   /* ===== Hero banner ===== */
   .banner {
     position: relative;
-    color: #fff;
-    background:
-      linear-gradient(100deg, rgba(10, 7, 25, .72) 0%, rgba(10, 7, 25, .35) 55%, rgba(10, 7, 25, .15) 100%),
-      url('assets/hero-nebula.webp') center / cover no-repeat,
-      #0d0a1f;
+    color: #2f2f3d;
+    background: var(--page-bg);
     overflow: hidden;
   }
   .banner-inner { position: relative; padding: 56px 0 48px; }
-  .banner h1 { font-size: 40px; font-weight: 800; line-height: 1.15; max-width: 620px; margin-bottom: 12px; }
-  .banner .subtitle { font-size: 19px; color: #e9e3f7; max-width: 560px; margin-bottom: 16px; }
-  .banner .last-update { font-size: 12.5px; color: #cfc7e6; }
-  .banner .last-update strong { color: #fff; font-weight: 600; }
-  .banner-strip { position: relative; background: var(--dark-strip); font-size: 13.5px; }
+  .banner h1 { font-size: 40px; font-weight: 800; line-height: 1.15; max-width: 620px; margin-bottom: 12px; color: #1e1b33; }
+  .banner .subtitle { font-size: 19px; color: #4a4a5c; max-width: 560px; margin-bottom: 16px; }
+  .banner .last-update { font-size: 12.5px; color: #61616f; }
+  .banner .last-update strong { color: #3a3a4a; font-weight: 600; }
+  .banner-strip { position: relative; background: #e4e7f6; border-top: 1px solid #dce0f2; border-bottom: 1px solid #dce0f2; font-size: 13.5px; }
   .banner-strip .wrap { display: flex; gap: 36px; justify-content: center; padding: 10px 16px; flex-wrap: wrap; }
-  .banner-strip span { color: #e8e8e8; }
+  .banner-strip span { color: #3a3a4a; }
   .banner-strip span::before { content: "✓"; color: var(--tp-green); font-weight: 700; margin-right: 7px; }
 
   /* ===== Partner list ===== */
-  .list-section { padding: 28px 0 8px; }
+  .list-section { padding: 44px 0 8px; }
   .partner-card {
     position: relative;
     display: grid;
@@ -319,7 +314,7 @@
     .banner h1 { font-size: 24px; margin-bottom: 8px; }
     .banner .subtitle { font-size: 14px; line-height: 1.4; margin-bottom: 8px; }
     .banner-strip .wrap { padding: 8px 14px; gap: 5px 10px; }
-    .list-section { padding-top: 12px; }
+    .list-section { padding-top: 34px; }
     .partner-card.style-b .card-logo { padding: 14px 10px 10px; }
     .partner-card.style-b .card-body { padding: 14px 18px; }
     .offer-headline { font-size: 15.5px; margin-bottom: 7px; }
