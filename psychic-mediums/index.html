@@ -36,7 +36,7 @@
     /* Fire on any CTA: partner buttons, in-content promo buttons and partner
        logos. Delegated and in the capture phase so it runs before navigation,
        and keeps working after ClickFlare rewrites the hrefs. */
-    var CTA = '.visit-btn, .b-btn, .logo-link, .cp-logo, .pg-logo, .keen-logo, .kasamba-logo';
+    var CTA = '.visit-btn, .b-btn, .logo-link, .cp-logo, .pg-logo, .keen-logo, .kasamba-logo, .call-bar';
     document.addEventListener('click', function (e) {
         var t = e.target;
         if (t && t.closest && t.closest(CTA)) uet_report_conversion();
@@ -264,6 +264,26 @@
   }
   .buttono .b-btn:hover { background: var(--gold-hover); }
 
+  /* ===== Sticky call bar ===== */
+  .call-bar {
+    /* hidden by default; the mobile breakpoint switches it to flex */
+    display: none;
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 60;
+    flex-direction: column; align-items: center; justify-content: center;
+    gap: 1px; text-align: center; text-decoration: none;
+    padding: 9px 16px calc(9px + env(safe-area-inset-bottom, 0px));
+    background: linear-gradient(180deg, #8b3fbe, var(--purple));
+    color: #fff !important;
+    box-shadow: 0 -3px 16px rgba(30, 20, 60, .3);
+  }
+  .call-bar:active { background: var(--purple-hover); }
+  .call-bar .call-main {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 17px; font-weight: 800; letter-spacing: -.2px; line-height: 1.2;
+  }
+  .call-bar .call-main svg { flex: 0 0 auto; }
+  .call-bar .call-sub { font-size: 12px; opacity: .88; font-weight: 500; }
+
   /* ===== Footer ===== */
   footer { background: var(--footer-bg); color: #bbb; padding: 40px 0 24px; font-size: 13.5px; }
   .footer-grid { display: flex; justify-content: space-between; gap: 30px; flex-wrap: wrap; margin-bottom: 24px; }
@@ -307,6 +327,9 @@
     .banner-strip span::before { margin-right: 5px; }
     .buttono { grid-template-columns: 1fr; text-align: center; }
     .navlinks { display: none; }
+    /* Sticky call bar is mobile-only: tap-to-call is not useful on desktop */
+    .call-bar { display: flex; }
+    body { padding-bottom: 74px; }
 
     /* Above-the-fold budget on mobile: tighten the banner, strip and the
        first card so the Editor's Choice CTA lands within the first screen. */
@@ -337,8 +360,6 @@
     .card-cta .stars { font-size: 13px; }
     .card-cta .reviews { margin: 0; }
     .card-cta .visit-btn { flex: 0 0 100%; margin-top: 9px; }
-      grid-column: 2; grid-row: 1 / -1; align-self: center;
-    }
   }
 </style>
 </head>
@@ -665,6 +686,15 @@
 
 <!-- ClickFlare landing page tracking tag -->
 <script>!function(){"use strict";var t="lp_ref",n="cpid",e="lpurl",c="https://secure.psychictopia.com",r="(?<domain>http(?:s?)://[^/]*)".concat("/cf/click"),a="(?:(?:/(?<cta>[1-9][0-9]*)/?)|(?:/))?",i="^".concat(r).concat(a).concat("(?:$|(\\?.*))"),o='javascript:window.clickflare.l="(?<original_link>'.concat(r).concat(a,'("|(\\?[^"]*"))).*'),s=function(){return new RegExp(i,"")},u=function(){return new RegExp(o,"")};function l(t){var n=function(t){return t.replace(s(),(function(t){for(var n=[],e=1;e<arguments.length;e++)n[e-1]=arguments[e];var r=n[n.length-1].domain;return t.replace(r,c)}))}(t);return'javascript:window.clickflare.l="'.concat(n,'"; void 0;')}function d(t,n){if(n&&t&&n.apply(document,[t]),/loaded|interactive|complete/.test(document.readyState))for(var e=0,c=document.links.length;e<c;e++)if(s().test(document.links[e].href)){var r=document.links[e];window.clickflare.links_replaced.has(r)||(r.href=l(r.href),window.clickflare.links_replaced.add(r))}}var f,h,m,p;!function(r,a){var i=document.onreadystatechange;window.clickflare||(window.clickflare={listeners:{},customParams:{},links_replaced:new Set,addEventListener:function(t,n){var e=this.listeners[t]||[];e.includes(n)||e.push(n),this.listeners[t]=e},dispatchEvent:function(t,n){n&&(this.customParams[t]=n),(this.listeners[t]||[]).forEach((function(t){return t(n)}))},push:function(t,n){n&&(this.customParams[t]=n),(this.listeners[t]||[]).forEach((function(t){return t(n)}))}},document.onreadystatechange=function(t){return d(t,i)},d(null,i),setTimeout((function(){!function(r,a){var i,o=function(r,a){var i=new URL("".concat(c).concat(r));o=a,s="{",u=s+s,l="_",d=l+l,o.startsWith(u)||o.startsWith(d)||i.searchParams.set(n,a);var o,s,u,l,d;return i.searchParams.append(t,document.referrer),i.searchParams.append(e,location.href),i.searchParams.append("lpt",document.title),i.searchParams.append("t",(new Date).getTime().toString()),i.toString()}(r,a),s=document.createElement("script"),l=document.scripts[0];s.async=1,s.src=o,s.onerror=function(){!function(){for(var t=function(t,n){var e=document.links[t];u().test(decodeURI(e.href))&&setTimeout((function(){e&&e.setAttribute("href",function(t){var n=t.match(u());if(n){var e=(n.groups||{}).original_link;return e?e.slice(0,-1):t}return t}(decodeURI(e.href)))}))},n=0,e=document.links.length;n<e;n++)t(n)}()},null===(i=l.parentNode)||void 0===i||i.insertBefore(s,l)}(r,a)})))}("".concat("/cf/tags","/").concat(new URL(window.location.href).searchParams.get("cftmid")||"__CONTAINER_ID__"),(m=new URL(window.location.href).searchParams.get(n),f=new RegExp("(^| )".concat("cf_cpid","=([^;]+)")),p=(h=document.cookie.match(f))&&h.pop()||null,m||p||"__CAMPAIGN_ID__"))}();</script>
+
+<!-- Sticky call bar -->
+<a class="call-bar" href="tel:+18887037999">
+  <span class="call-main">
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1l-2.3 2.2z"/></svg>
+    Tap to Call AskNow &middot; (888) 703-7999
+  </span>
+  <span class="call-sub">Best Phone Psychics 2026</span>
+</a>
 
 </body>
 </html>
