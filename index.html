@@ -111,17 +111,6 @@
   .banner .subtitle { font-size: 19px; color: #e9e3f7; max-width: 560px; margin-bottom: 16px; }
   .banner .last-update { font-size: 12.5px; color: #cfc7e6; }
   .banner .last-update strong { color: #fff; font-weight: 600; }
-  .ad-disclosure {
-    position: absolute; top: 14px; right: 16px;
-    font-size: 11px; color: #fff; opacity: .85; cursor: help;
-    border-bottom: 1px dotted rgba(255,255,255,.6);
-  }
-  .ad-disclosure .tip {
-    display: none; position: absolute; right: 0; top: 22px; width: 300px;
-    background: #5d5d5d; color: #fff; font-size: 11.5px; line-height: 1.5;
-    padding: 10px 12px; border-radius: 6px; z-index: 20; text-align: left;
-  }
-  .ad-disclosure:hover .tip { display: block; }
   .banner-strip { position: relative; background: var(--dark-strip); font-size: 13.5px; }
   .banner-strip .wrap { display: flex; gap: 36px; justify-content: center; padding: 10px 16px; flex-wrap: wrap; }
   .banner-strip span { color: #e8e8e8; }
@@ -303,7 +292,10 @@
     .card-cta { border-left: 0; border-top: 1px solid #eee; }
     .banner-inner { text-align: center; }
     .banner h1 { font-size: 29px; margin-left: auto; margin-right: auto; }
-    .banner .subtitle { margin-left: auto; margin-right: auto; }
+    .banner .subtitle {
+      margin-left: auto; margin-right: auto;
+      font-size: 15.5px; line-height: 1.45; margin-bottom: 12px;
+    }
     /* Two compact columns instead of four full-width rows, so the strip
        stops pushing the first partner card below the fold. */
     .banner-strip { font-size: 12.5px; }
@@ -318,6 +310,38 @@
     .banner-strip span::before { margin-right: 5px; }
     .buttono { grid-template-columns: 1fr; text-align: center; }
     .navlinks { display: none; }
+
+    /* Above-the-fold budget on mobile: tighten the banner, strip and the
+       first card so the Editor's Choice CTA lands within the first screen. */
+    .banner-inner { padding: 22px 0 18px; }
+    .banner h1 { font-size: 24px; margin-bottom: 8px; }
+    .banner .subtitle { font-size: 14px; line-height: 1.4; margin-bottom: 8px; }
+    .banner-strip .wrap { padding: 8px 14px; gap: 5px 10px; }
+    .list-section { padding-top: 12px; }
+    .partner-card.style-b .card-logo { padding: 14px 10px 10px; }
+    .partner-card.style-b .card-body { padding: 14px 18px; }
+    .offer-headline { font-size: 15.5px; margin-bottom: 7px; }
+    .checks-gold li { padding: 2px 0 2px 24px; font-size: 14px; line-height: 1.35; }
+    .checks-gold li::before { top: 2px; }
+    /* Every card: score reads as one compact line with the button beneath it.
+       flex-direction must be reset here, the base rule sets column. */
+    .card-cta {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: baseline;
+      justify-content: center;
+      gap: 2px 8px;
+      padding: 10px 18px 14px;
+    }
+    .card-cta .score-tag { margin-bottom: 0; }
+    .card-cta .score-num { font-size: 24px; }
+    .card-cta .score-label { margin: 0; }
+    .card-cta .stars { font-size: 13px; }
+    .card-cta .reviews { margin: 0; }
+    .card-cta .visit-btn { flex: 0 0 100%; margin-top: 9px; }
+      grid-column: 2; grid-row: 1 / -1; align-self: center;
+    }
   }
 </style>
 </head>
@@ -339,13 +363,10 @@
 
 <!-- Hero banner -->
 <div class="banner">
-  <div class="ad-disclosure">Advertising Disclosure
-    <span class="tip">Psychictopia.com is an independent comparison site supported by referral fees. We may be compensated when you connect with a service through our links — this can influence where and how brands appear, though our ratings are based on our own research and testing. We don't feature every psychic reading service on the market.</span>
-  </div>
   <div class="wrap banner-inner">
     <h1>The Top Psychic Reading Sites of 2026</h1>
-    <p class="subtitle">Side-by-side rankings of today's leading online psychics — plus exclusive intro deals for first-time customers.</p>
-    <p class="last-update"><strong>Last updated:</strong> July 2026</p>
+    <p class="subtitle">Exclusive intro deals for first-time customers!</p>
+    <p class="last-update"><strong>Last updated:</strong> August 2026</p>
   </div>
   <div class="banner-strip">
     <div class="wrap">
