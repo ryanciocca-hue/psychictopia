@@ -9,33 +9,15 @@
 <script>(function(w,d,t,u,o){w[u]=w[u]||[],o.ts=(new Date).getTime();var n=d.createElement(t); n.src="https://bat.bing.net/bat.js?ti="+o.ti+("uetq"!=u?"&q="+u:""),n.async=1, n.onload=n.onreadystatechange=function(){var s=this.readyState;s&&"loaded"!==s&&"complete"!==s||( o.q=w[u],w[u]=new UET(o),w[u].push("pageLoad"),n.onload=n.onreadystatechange=null)}; var i=d.getElementsByTagName(t)[0];i.parentNode.insertBefore(n,i); })(window,document,"script","uetq",{ti:"271011563", enableAutoSpaTracking: true});</script>
 <!-- Microsoft Advertising conversion goal: clicks_cta -->
 <script>
+function uet_report_conversion() {
+    window.uetq = window.uetq || [];
+    window.uetq.push('event', 'clicks_cta', {});
+}
+/* Fire on any CTA: partner buttons, in-content promo buttons, partner logos
+   and the sticky call bar. Delegated and in the capture phase so it runs
+   before navigation, and keeps working after ClickFlare rewrites the hrefs.
+   No client-side dedup — the Bing goal is configured to count uniques. */
 (function () {
-    var KEY = 'pt_cta_conv';
-    var fired = false; /* in-memory fallback when storage is unavailable */
-
-    function alreadyFired() {
-        if (fired) return true;
-        try { return sessionStorage.getItem(KEY) === '1'; } catch (e) { return false; }
-    }
-    function markFired() {
-        fired = true;
-        try { sessionStorage.setItem(KEY, '1'); } catch (e) {}
-    }
-
-    /* Fires at most once per session. sessionStorage is cleared when the tab
-       or browser closes, so a visitor returning in a new session can convert
-       again. If storage is blocked (private browsing), it degrades to once
-       per page view. */
-    window.uet_report_conversion = function () {
-        if (alreadyFired()) return;
-        markFired();
-        window.uetq = window.uetq || [];
-        window.uetq.push('event', 'clicks_cta', {});
-    };
-
-    /* Fire on any CTA: partner buttons, in-content promo buttons and partner
-       logos. Delegated and in the capture phase so it runs before navigation,
-       and keeps working after ClickFlare rewrites the hrefs. */
     var CTA = '.visit-btn, .b-btn, .logo-link, .cp-logo, .pg-logo, .keen-logo, .kasamba-logo, .call-bar';
     document.addEventListener('click', function (e) {
         var t = e.target;
