@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>California Psychics Review 2026 — 20 Minutes for $20, and How the Major Networks Compare</title>
 <meta name="description" content="Most psychic networks give you 3 free minutes. California Psychics gives new customers 20 minutes for $20 with an advisor from the top 2% of applicants. See how the major networks compare on offers, screening, and guarantees.">
-<meta name="theme-color" content="#101119">
+<meta name="theme-color" content="#552575">
 <link rel="canonical" href="https://www.psychictopia.com/best-psychic-network">
 <meta property="og:url" content="https://www.psychictopia.com/best-psychic-network">
 <meta property="og:type" content="website">
@@ -21,28 +21,38 @@
    TOKENS
    ============================================================ */
 :root{
-  /* colour */
-  --ink:#101119;              /* near-black, indigo cast */
-  --ink-soft:#191b26;
-  --ink-line:rgba(255,255,255,.14);
+  /* ---- Brand palette, shared verbatim with the other psychictopia landers ---- */
+  --purple:#7934a6;
+  --purple-hover:#552575;
+  --purple-light:#8b3fbe;
+  --first-border:#c165fc;     /* the #1-pick border on the other landers */
+  --gold:#e5b034;
+  --gold-hover:#e5a000;
+  --footer-bg:#2d2d2d;
+  --page-bg:#eef0fa;
+
+  /* ---- Roles this page assigns to those colours ---- */
+  --ink:var(--purple-hover);  /* deep purple ground for the dark sections */
+  --ink-soft:var(--footer-bg);
+  --ink-line:rgba(255,255,255,.18);
   --paper:#ffffff;
-  --paper-tint:#f7f6f3;       /* very slightly warm alternate */
-  --text:#1c1e26;             /* 16.6:1 on paper */
-  --text-muted:#55596b;       /* 6.9:1 on paper  */
-  --text-invert:#f4f4f7;
-  --text-invert-muted:#c2c4d1;/* 10.4:1 on ink   */
-  --accent:#e8a317;           /* warm amber      */
-  --accent-hi:#f4b737;
-  --accent-deep:#7a4f04;      /* 7.1:1 on paper  */
-  --accent-wash:#fdf5e4;
-  --line:#e4e2dc;
-  --btn-text:#17130a;         /* 7.7:1 on amber  */
-  --focus:#1c1e26;
+  --paper-tint:var(--page-bg);/* the site's lavender alternate */
+  --text:#2d2d2d;             /* 13.8:1 on paper */
+  --text-muted:#4a4a5c;       /* 8.7:1 on paper  */
+  --text-invert:#ffffff;      /* 11.0:1 on ink   */
+  --text-invert-muted:#e0d5ec;/* 7.8:1 on ink    */
+  --accent:var(--gold);       /* CTAs only       */
+  --accent-hi:var(--gold-hover);
+  --accent-deep:var(--purple);/* accent text and rank chrome: 7.4:1 on paper */
+  --accent-wash:#f7eefc;
+  --line:#d3d3d3;
+  --btn-text:#2d2d2d;         /* 6.9:1 on gold   */
+  --focus:var(--purple);
 
   /* shape */
   --radius:14px;
   --radius-sm:8px;
-  --shadow:0 1px 2px rgba(16,17,25,.05), 0 14px 34px -14px rgba(16,17,25,.28);
+  --shadow:0 1px 2px rgba(45,45,45,.06), 0 14px 34px -14px rgba(85,37,117,.32);
 
   /* 8px spacing scale */
   --s1:4px; --s2:8px; --s3:16px; --s4:24px; --s5:32px;
@@ -98,7 +108,7 @@ main{background:var(--paper)}
 .narrow{max-width:var(--measure)}
 section{padding-top:var(--section-y);padding-bottom:var(--section-y)}
 .tint{background:var(--paper-tint)}
-.on-dark{background:var(--ink);color:var(--text-invert);--focus:#f7c65a}
+.on-dark{background:var(--ink);color:var(--text-invert);--focus:var(--gold)}
 .on-dark h1,.on-dark h2{color:#fff}
 .eyebrow{
   font-size:13px;line-height:1.4;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
@@ -157,7 +167,7 @@ section{padding-top:var(--section-y);padding-bottom:var(--section-y)}
 }
 .callout{
   margin:var(--s6) 0;padding:var(--s4) var(--s4) var(--s4) var(--s5);
-  border-left:4px solid var(--accent);background:var(--accent-wash);
+  border-left:4px solid var(--purple);background:var(--accent-wash);
   border-radius:0 var(--radius) var(--radius) 0;
   font-family:var(--font-display);font-size:clamp(1.25rem,4.2vw,1.6rem);line-height:1.32;font-weight:700
 }
@@ -171,10 +181,10 @@ section{padding-top:var(--section-y);padding-bottom:var(--section-y)}
   position:relative;background:var(--paper);border:1px solid var(--line);
   border-radius:var(--radius);padding:var(--s4)
 }
-.tier--pop{border:2px solid var(--accent);box-shadow:var(--shadow);background:linear-gradient(180deg,var(--accent-wash),var(--paper) 58%)}
+.tier--pop{border:2px solid var(--first-border);box-shadow:var(--shadow);background:linear-gradient(180deg,var(--accent-wash),var(--paper) 58%)}
 .tier .badge{
   display:inline-block;margin-bottom:var(--s3);padding:5px 11px;border-radius:999px;
-  background:var(--accent);color:var(--btn-text);
+  background:var(--purple);color:#fff;
   font-size:11.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;line-height:1.4
 }
 .tier h3{margin-bottom:var(--s2)}
@@ -203,12 +213,12 @@ section{padding-top:var(--section-y);padding-bottom:var(--section-y)}
 }
 .cmp .cmp-corner{position:sticky;left:0;z-index:2;background:var(--paper-tint);border-bottom:2px solid var(--text)}
 .cmp tbody tr:last-child th,.cmp tbody tr:last-child td{border-bottom:0}
-.cmp .pick{background:var(--accent-wash);border-left:2px solid var(--accent);border-right:2px solid var(--accent)}
-.cmp thead .pick{border-top:2px solid var(--accent);border-bottom-color:var(--accent);border-radius:var(--radius) var(--radius) 0 0;padding-top:var(--s3);min-width:222px}
-.cmp tbody tr:last-child .pick{border-bottom:2px solid var(--accent);border-radius:0 0 var(--radius) var(--radius)}
+.cmp .pick{background:var(--accent-wash);border-left:2px solid var(--first-border);border-right:2px solid var(--first-border)}
+.cmp thead .pick{border-top:2px solid var(--first-border);border-bottom-color:var(--first-border);border-radius:var(--radius) var(--radius) 0 0;padding-top:var(--s3);min-width:222px}
+.cmp tbody tr:last-child .pick{border-bottom:2px solid var(--first-border);border-radius:0 0 var(--radius) var(--radius)}
 .ribbon{
   display:inline-block;margin-bottom:var(--s2);padding:5px 11px;border-radius:999px;
-  background:var(--accent);color:var(--btn-text);
+  background:var(--purple);color:#fff;
   font:800 11.5px/1.4 var(--font-body);letter-spacing:.1em;text-transform:uppercase
 }
 .cmp-brand{
@@ -224,7 +234,7 @@ a.cmp-brand:hover .go{color:var(--text)}
    COMPARISON — mobile cards
    ============================================================ */
 .cmp-card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:var(--s4)}
-.cmp-card--pick{border:2px solid var(--accent);box-shadow:var(--shadow);background:linear-gradient(180deg,var(--accent-wash),var(--paper) 40%)}
+.cmp-card--pick{border:2px solid var(--first-border);box-shadow:var(--shadow);background:linear-gradient(180deg,var(--accent-wash),var(--paper) 40%)}
 .cmp-card h3{margin-bottom:var(--s3)}
 .cmp-card dl{margin:0;display:grid;gap:var(--s3)}
 .cmp-card dl>div{display:grid;gap:2px;padding-bottom:var(--s3);border-bottom:1px solid var(--line)}
@@ -242,7 +252,7 @@ a.cmp-brand:hover .go{color:var(--text)}
 .steps li::before{
   content:counter(step);position:absolute;left:0;top:-4px;
   width:44px;height:44px;display:grid;place-items:center;border-radius:50%;
-  background:var(--accent-wash);border:2px solid var(--accent);
+  background:var(--accent-wash);border:2px solid var(--purple);
   font-family:var(--font-display);font-weight:700;font-size:20px;color:var(--accent-deep)
 }
 .steps h3{margin-bottom:var(--s2)}
@@ -270,7 +280,7 @@ details[open]>summary .chev{transform:rotate(180deg)}
 .final{text-align:left}
 .final h2{max-width:20ch}
 .final .lede{margin-top:var(--s4)}
-.site-footer{background:var(--ink-soft);color:var(--text-invert-muted);padding:var(--s7) 0 var(--s7)}
+.site-footer{background:var(--ink-soft);color:#c8c8c8;padding:var(--s7) 0 var(--s7)}
 .disclosures{display:grid;gap:var(--s4);max-width:74ch}
 .disclosures p{margin:0;font-size:14.5px;line-height:1.65}
 .disclosures strong{color:#fff}
@@ -281,11 +291,12 @@ details[open]>summary .chev{transform:rotate(180deg)}
 .sticky{
   position:fixed;left:0;right:0;bottom:0;z-index:60;display:none;align-items:center;gap:var(--s3);
   padding:11px clamp(14px,4vw,20px);padding-bottom:calc(11px + env(safe-area-inset-bottom,0px));
-  background:#0d0e15;border-top:1px solid var(--ink-line);
+  background:linear-gradient(180deg,var(--purple-light),var(--purple));
+  border-top:1px solid var(--ink-line);
   box-shadow:0 -8px 24px rgba(0,0,0,.35);
   transform:translateY(110%);opacity:0;visibility:hidden;
   transition:transform .24s ease,opacity .24s ease,visibility .24s ease;
-  --focus:#f7c65a;
+  --focus:var(--gold);
 }
 @media (max-width:767px){.sticky{display:flex}}
 .sticky.is-visible{transform:none;opacity:1;visibility:visible}
