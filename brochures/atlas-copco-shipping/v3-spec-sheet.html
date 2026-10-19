@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shipping's On Us — Spec Sheet</title>
+<link rel="stylesheet" href="fonts.css">
+<style>
+  @page { size: letter; margin: 0; }
+  :root {
+    --blue: #0092bc;
+    --navy: #0d2737;
+    --ink: #1b2d39;
+    --muted: #566671;
+    --line: #dde6eb;
+    --tint: #eff6f9;
+    --sky: #7fd2f0;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: #fff; }
+  body {
+    font-family: 'IBM Plex Sans', system-ui, sans-serif;
+    color: var(--ink);
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  @media screen {
+    body { background: #e4e9ec; padding: 40px 0; }
+    .sheet { margin: 0 auto; box-shadow: 0 10px 40px rgba(13, 39, 55, .18); }
+  }
+  .mono {
+    font-family: 'IBM Plex Mono', ui-monospace, monospace;
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+  }
+
+  .sheet {
+    display: grid;
+    grid-template-columns: 276px 1fr;
+    width: 8.5in;
+    height: 11in;
+    overflow: hidden;
+    background: #fff;
+  }
+
+  /* Sidebar */
+  .sidebar {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    padding: 46px 32px 40px;
+    background: var(--navy);
+    color: #fff;
+  }
+  .sidebar .art {
+    position: absolute;
+    left: -170px;
+    bottom: -30px;
+    width: 560px;
+    opacity: .1;
+    pointer-events: none;
+  }
+  .sidebar > *:not(.art) { position: relative; }
+  .sidebar .logo { align-self: flex-start; height: 46px; display: block; }
+  .sidebar .label { color: var(--sky); }
+  .location { margin-top: 58px; }
+  .location h2 { margin-top: 10px; font-size: 24px; font-weight: 600; line-height: 1.15; letter-spacing: -.01em; }
+  .location p { margin-top: 8px; font-size: 14px; line-height: 1.5; color: rgba(255, 255, 255, .72); }
+  .rule { height: 1px; margin: 26px 0; background: rgba(255, 255, 255, .14); }
+  .contact + .contact { margin-top: 18px; }
+  .contact p { margin-top: 6px; font-size: 15px; font-weight: 500; }
+  .onsite { margin-top: 14px; list-style: none; }
+  .onsite li {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    padding: 9px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, .08);
+    font-size: 14px;
+  }
+  .onsite li:last-child { border-bottom: 0; }
+  .onsite svg { flex: none; width: 16px; height: 16px; }
+  .side-cta {
+    margin-top: auto;
+    padding: 20px 20px 18px;
+    border-radius: 4px;
+    background: var(--blue);
+  }
+  .side-cta h4 { display: flex; justify-content: space-between; align-items: center; font-size: 19px; font-weight: 600; }
+  .side-cta h4 svg { width: 30px; height: 30px; }
+  .side-cta p { margin-top: 6px; font-size: 13px; line-height: 1.5; color: rgba(255, 255, 255, .9); }
+
+  /* Main column */
+  .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 46px 48px 40px;
+  }
+  .eyebrow { display: flex; align-items: center; gap: 10px; color: var(--blue); font-size: 11px; font-weight: 600; }
+  .eyebrow::before { content: ''; width: 8px; height: 8px; background: var(--blue); }
+  h1 {
+    margin-top: 18px;
+    font-size: 62px;
+    font-weight: 700;
+    line-height: .98;
+    letter-spacing: -.03em;
+    color: var(--navy);
+  }
+  h1 span { color: var(--blue); }
+  .lede { margin-top: 18px; font-size: 16.5px; line-height: 1.55; color: var(--muted); }
+  .lede strong { color: var(--ink); font-weight: 600; }
+
+  .spec {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin-top: 26px;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+  }
+  .spec div { padding: 12px 14px; }
+  .spec div + div { border-left: 1px solid var(--line); }
+  .spec .mono { font-size: 9.5px; letter-spacing: .12em; color: var(--muted); }
+  .spec strong { display: block; margin-top: 5px; font-size: 16px; font-weight: 600; color: var(--navy); }
+  .spec .accent { background: var(--blue); border-radius: 3px 0 0 3px; }
+  .spec .accent .mono { color: rgba(255, 255, 255, .8); }
+  .spec .accent strong { color: #fff; }
+
+  .section-head { display: flex; align-items: center; gap: 12px; color: var(--navy); font-weight: 600; }
+  .section-head::after { content: ''; flex: 1; height: 1px; background: var(--line); }
+
+  .steps { margin-top: 4px; }
+  .step {
+    display: grid;
+    grid-template-columns: 48px 1fr;
+    padding: 13px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .step:last-child { border-bottom: 0; }
+  .step .num {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 19px;
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--blue);
+  }
+  .step h3 { font-size: 16.5px; font-weight: 600; line-height: 1.25; color: var(--navy); }
+  .step p { margin-top: 4px; font-size: 13.5px; line-height: 1.5; color: var(--muted); }
+
+  .expertise { margin-top: 6px; }
+  .row { padding: 9px 0; }
+  .row:last-child { padding-bottom: 0; }
+  .row .mono { font-size: 9.5px; color: var(--muted); }
+  .chips { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 7px; }
+  .chips span {
+    padding: 2px 8px;
+    border: 1px solid #cfe1e9;
+    border-radius: 2px;
+    background: var(--tint);
+    font-size: 12.5px;
+    font-weight: 500;
+    line-height: 1.55;
+    color: var(--navy);
+  }
+
+</style>
+</head>
+<body>
+<main class="sheet">
+  <aside class="sidebar">
+    <img class="art" src="assets/blueprint-white.webp" alt="">
+    <img class="logo" src="assets/logo-white.png" alt="Atlas Copco">
+
+    <div class="location">
+      <div class="mono label">Your service center</div>
+      <h2>Broadview Heights, OH</h2>
+      <p>9100 Market Place, Bldg. C<br>Broadview Heights, OH</p>
+    </div>
+
+    <div class="rule"></div>
+
+    <div class="contact">
+      <div class="mono label">Service Manager</div>
+      <p>Tony Zajkowski</p>
+    </div>
+    <div class="contact">
+      <div class="mono label">Email</div>
+      <p>PTNAnorth@atlascopco.com</p>
+    </div>
+
+    <div class="rule"></div>
+
+    <div class="mono label">On-site capabilities</div>
+    <ul class="onsite">
+      <li><svg viewBox="0 0 16 16" aria-hidden="true"><rect x=".75" y=".75" width="14.5" height="14.5" rx="2" fill="none" stroke="#7fd2f0" stroke-width="1.5"/><path d="M4.4 8.2l2.3 2.3 4.9-5" fill="none" stroke="#7fd2f0" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Reman / refurb capabilities</li>
+      <li><svg viewBox="0 0 16 16" aria-hidden="true"><rect x=".75" y=".75" width="14.5" height="14.5" rx="2" fill="none" stroke="#7fd2f0" stroke-width="1.5"/><path d="M4.4 8.2l2.3 2.3 4.9-5" fill="none" stroke="#7fd2f0" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Field service technicians</li>
+      <li><svg viewBox="0 0 16 16" aria-hidden="true"><rect x=".75" y=".75" width="14.5" height="14.5" rx="2" fill="none" stroke="#7fd2f0" stroke-width="1.5"/><path d="M4.4 8.2l2.3 2.3 4.9-5" fill="none" stroke="#7fd2f0" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Compressor testing</li>
+      <li><svg viewBox="0 0 16 16" aria-hidden="true"><rect x=".75" y=".75" width="14.5" height="14.5" rx="2" fill="none" stroke="#7fd2f0" stroke-width="1.5"/><path d="M4.4 8.2l2.3 2.3 4.9-5" fill="none" stroke="#7fd2f0" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Load bank testing</li>
+    </ul>
+
+    <div class="side-cta">
+      <h4>Ready to ship?<svg viewBox="0 0 30 30" aria-hidden="true"><circle cx="15" cy="15" r="14.25" fill="none" stroke="#fff" stroke-opacity=".55" stroke-width="1.5"/><path d="M9.5 15h10m-4-4.25L19.75 15l-4.25 4.25" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></h4>
+      <p>Contact Tony Zajkowski to schedule your truckload.</p>
+    </div>
+  </aside>
+
+  <div class="content">
+    <div class="intro">
+      <div class="mono eyebrow">Free return shipping program</div>
+      <h1>Shipping’s<br><span>on us.</span></h1>
+      <p class="lede">Approve your quoted repairs and we’ll cover return shipment of a <strong>complete truckload</strong> back to your location — at no cost to you.</p>
+      <div class="spec">
+        <div class="accent"><span class="mono">Return freight</span><strong>$0</strong></div>
+        <div><span class="mono">Load size</span><strong>Full truckload</strong></div>
+        <div><span class="mono">Delivered to</span><strong>Your location</strong></div>
+      </div>
+    </div>
+
+    <div class="how">
+      <div class="mono section-head">How it works</div>
+      <div class="steps">
+        <div class="step">
+          <div class="num">01</div>
+          <div>
+            <h3>Ship your equipment</h3>
+            <p>Send a full truckload of equipment to our service center for repair.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="num">02</div>
+          <div>
+            <h3>Receive your quote</h3>
+            <p>Our expert technicians will assess your equipment and provide a detailed repair quote.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="num">03</div>
+          <div>
+            <h3>Approve &amp; we ship free</h3>
+            <p>Approve the quoted FP repairs and we’ll cover the return shipment — the entire truckload — back to your location.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="expert">
+      <div class="mono section-head">Engine &amp; equipment expertise</div>
+      <div class="expertise">
+        <div class="row">
+          <div class="mono">Engine competence</div>
+          <div class="chips"><span>John Deere</span><span>Kohler</span><span>Kubota</span><span>Cummins</span><span>CAT</span></div>
+        </div>
+        <div class="row">
+          <div class="mono">Engine software</div>
+          <div class="chips"><span>John Deere</span><span>Kohler</span><span>Kubota</span><span>Cummins</span><span>CAT</span><span>Fiat</span><span>Volvo</span><span>Isuzu</span></div>
+        </div>
+        <div class="row">
+          <div class="mono">Technician competence</div>
+          <div class="chips"><span>Compressors</span><span>Generators</span><span>Pumps</span><span>ESS</span><span>Light towers</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+</body>
+</html>
