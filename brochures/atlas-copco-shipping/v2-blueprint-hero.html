@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shipping's On Us — Blueprint Hero</title>
+<link rel="stylesheet" href="fonts.css">
+<style>
+  @page { size: letter; margin: 0; }
+  :root {
+    --blue: #0092bc;
+    --blue-deep: #006c90;
+    --navy: #0b2433;
+    --ink: #1a2c38;
+    --muted: #536470;
+    --line: #dbe6eb;
+    --tint: #eef6fa;
+    --sky: #8fdcf5;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: #fff; }
+  body {
+    font-family: 'Barlow', system-ui, sans-serif;
+    color: var(--ink);
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  @media screen {
+    body { background: #e4e9ec; padding: 40px 0; }
+    .sheet { margin: 0 auto; box-shadow: 0 10px 40px rgba(11, 36, 51, .18); }
+  }
+
+  .sheet {
+    position: relative;
+    width: 8.5in;
+    height: 11in;
+    overflow: hidden;
+    background: #fff;
+  }
+
+  /* Hero */
+  .hero {
+    position: relative;
+    overflow: hidden;
+    padding: 38px 56px 92px;
+    color: #fff;
+    background:
+      linear-gradient(rgba(255, 255, 255, .055) 1px, transparent 1px) 0 0 / 24px 24px,
+      linear-gradient(90deg, rgba(255, 255, 255, .055) 1px, transparent 1px) 0 0 / 24px 24px,
+      linear-gradient(150deg, #00a3cf 0%, var(--blue) 42%, var(--blue-deep) 100%);
+  }
+  .hero .art {
+    position: absolute;
+    top: 64px;
+    right: -250px;
+    width: 820px;
+    opacity: .22;
+    pointer-events: none;
+  }
+  .topbar {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .topbar img { height: 48px; display: block; }
+  .topbar .meta {
+    text-align: right;
+    font-size: 13px;
+    line-height: 1.4;
+    color: rgba(255, 255, 255, .82);
+  }
+  .topbar .meta strong {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: #fff;
+  }
+  .hero-copy { position: relative; margin-top: 52px; }
+  .pill {
+    display: inline-block;
+    padding: 6px 14px;
+    border: 1px solid rgba(255, 255, 255, .55);
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+  }
+  h1 {
+    margin-top: 18px;
+    font-family: 'Barlow Condensed', 'Barlow', sans-serif;
+    font-size: 106px;
+    font-weight: 800;
+    line-height: .9;
+    letter-spacing: -.005em;
+    text-transform: uppercase;
+  }
+  h1 span { color: var(--sky); }
+  .lede {
+    margin-top: 22px;
+    max-width: 540px;
+    font-size: 18.5px;
+    line-height: 1.45;
+    color: rgba(255, 255, 255, .93);
+  }
+  .lede strong { font-weight: 700; color: #fff; }
+
+  /* Steps card, overlapping the hero */
+  .card {
+    position: relative;
+    z-index: 2;
+    margin: -62px 40px 0;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 22px 44px -16px rgba(0, 52, 78, .38), 0 0 0 1px rgba(0, 60, 90, .06);
+  }
+  .card-head {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 18px 28px 0;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--blue);
+  }
+  .card-head::after { content: ''; flex: 1; height: 1px; background: var(--line); }
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); }
+  .step { padding: 16px 24px 24px 28px; }
+  .step + .step { border-left: 1px solid var(--line); }
+  .step .num {
+    display: grid;
+    place-items: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: var(--blue);
+    color: #fff;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 19px;
+    font-weight: 700;
+  }
+  .step h3 { margin-top: 12px; font-size: 18px; font-weight: 700; line-height: 1.2; color: var(--navy); }
+  .step p { margin-top: 6px; font-size: 13.5px; line-height: 1.5; color: var(--muted); }
+
+  /* Capabilities */
+  .caps { padding: 38px 56px 0; }
+  .caps-head { display: flex; justify-content: space-between; align-items: baseline; }
+  .caps-head h2 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: .01em;
+    text-transform: uppercase;
+    color: var(--navy);
+  }
+  .caps-head span { font-size: 14px; font-weight: 500; color: var(--muted); }
+  .cap-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.25fr 1.12fr;
+    gap: 14px;
+    margin-top: 16px;
+  }
+  .cap {
+    padding: 15px 16px 16px;
+    border: 1px solid var(--line);
+    border-top: 3px solid var(--blue);
+    border-radius: 6px;
+  }
+  .cap h3 {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--navy);
+  }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 11px; }
+  .chips span {
+    padding: 3px 9px;
+    border-radius: 3px;
+    background: var(--tint);
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1.5;
+    color: var(--navy);
+  }
+  .services {
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    justify-content: space-between;
+    margin-top: 14px;
+    padding: 14px 20px;
+    border-radius: 6px;
+    background: var(--tint);
+  }
+  .services div {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--navy);
+  }
+  .services svg { flex: none; width: 18px; height: 18px; }
+
+  /* Footer */
+  .footer {
+    position: absolute;
+    inset: auto 0 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 26px 56px 28px;
+    background: var(--navy);
+    border-top: 4px solid var(--blue);
+    color: #fff;
+  }
+  .footer .cta {
+    flex: none;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: .98;
+    text-transform: uppercase;
+  }
+  .footer .cta span { color: var(--sky); }
+  .contacts { display: flex; }
+  .contacts div { padding: 0 20px; white-space: nowrap; }
+  .contacts div + div { border-left: 1px solid rgba(255, 255, 255, .16); }
+  .contacts div:last-child { padding-right: 0; }
+  .contacts h4 {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--sky);
+  }
+  .contacts p { margin-top: 5px; font-size: 14px; line-height: 1.4; }
+</style>
+</head>
+<body>
+<main class="sheet">
+  <div class="hero">
+    <img class="art" src="assets/blueprint-white.webp" alt="">
+    <div class="topbar">
+      <img src="assets/logo-white.png" alt="Atlas Copco">
+      <div class="meta">
+        <strong>Service Center Offer</strong>
+        Broadview Heights, OH
+      </div>
+    </div>
+    <div class="hero-copy">
+      <div class="pill">Free return freight · Full truckload</div>
+      <h1>Shipping’s <span>on us.</span></h1>
+      <p class="lede">Approve your quoted repairs and we’ll cover return shipment of a <strong>complete truckload</strong> back to your location — at no cost to you.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">How it works</div>
+    <div class="steps">
+      <div class="step">
+        <div class="num">1</div>
+        <h3>Ship your equipment</h3>
+        <p>Send a full truckload of equipment to our service center for repair.</p>
+      </div>
+      <div class="step">
+        <div class="num">2</div>
+        <h3>Receive your quote</h3>
+        <p>Our expert technicians will assess your equipment and provide a detailed repair quote.</p>
+      </div>
+      <div class="step">
+        <div class="num">3</div>
+        <h3>Approve &amp; we ship free</h3>
+        <p>Approve the quoted FP repairs and we’ll cover the return shipment — the entire truckload — back to your location.</p>
+      </div>
+    </div>
+  </div>
+
+  <section class="caps">
+    <div class="caps-head">
+      <h2>Broadview Heights Service Center</h2>
+      <span>Capabilities &amp; expertise</span>
+    </div>
+    <div class="cap-grid">
+      <div class="cap">
+        <h3>Engine competence</h3>
+        <div class="chips"><span>John Deere</span><span>Kohler</span><span>Kubota</span><span>Cummins</span><span>CAT</span></div>
+      </div>
+      <div class="cap">
+        <h3>Engine software</h3>
+        <div class="chips"><span>John Deere</span><span>Kohler</span><span>Kubota</span><span>Cummins</span><span>CAT</span><span>Fiat</span><span>Volvo</span><span>Isuzu</span></div>
+      </div>
+      <div class="cap">
+        <h3>Technician competence</h3>
+        <div class="chips"><span>Compressors</span><span>Generators</span><span>Pumps</span><span>ESS</span><span>Light towers</span></div>
+      </div>
+    </div>
+    <div class="services">
+      <div><svg viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="9" fill="#0092bc"/><path d="M5.2 9.3l2.4 2.4 5.2-5.3" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Reman / refurb</div>
+      <div><svg viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="9" fill="#0092bc"/><path d="M5.2 9.3l2.4 2.4 5.2-5.3" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Field service techs</div>
+      <div><svg viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="9" fill="#0092bc"/><path d="M5.2 9.3l2.4 2.4 5.2-5.3" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Compressor testing</div>
+      <div><svg viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="9" fill="#0092bc"/><path d="M5.2 9.3l2.4 2.4 5.2-5.3" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Load bank testing</div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="cta">Ready<br><span>to ship?</span></div>
+    <div class="contacts">
+      <div>
+        <h4>Service Manager</h4>
+        <p>Tony Zajkowski</p>
+      </div>
+      <div>
+        <h4>Email</h4>
+        <p>tony.zajkowski@atlascopco.com</p>
+      </div>
+      <div>
+        <h4>Location</h4>
+        <p>9100 Market Place, Bldg. C<br>Broadview Heights, OH</p>
+      </div>
+    </div>
+  </footer>
+</main>
+</body>
+</html>
